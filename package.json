@@ -1,0 +1,14 @@
+{
+  "name": "mcp-database-server",
+  "version": "1.0.0",
+  "description": "Read-only MCP server that lets Claude/ChatGPT safely query a company database. Zero dependencies.",
+  "type": "module",
+  "bin": { "mcp-database-server": "src/index.ts" },
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "start": "node --no-warnings src/index.ts",
+    "seed": "node --no-warnings src/seed.ts demo.db",
+    "test": "node --no-warnings --test test/mcp.test.ts"
+  },
+  "license": "MIT"
+}
