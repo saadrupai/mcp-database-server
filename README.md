@@ -51,6 +51,14 @@ claude mcp add company-db -- node /path/to/mcp-database-server/src/index.ts
 
 Then ask: *"Which product category makes the most money?"* or *"Who are our top 5 customers by spend?"*
 
+## Use it as an agent skill
+
+`skills/company-db/SKILL.md` is a ready-made skill that tells the agent when to use this server and how: explore the schema first, count only paid orders, convert cents, aggregate in SQL and sanity-check results before answering. In Claude Code, copy it into your skills folder:
+
+```bash
+mkdir -p ~/.claude/skills && cp -r skills/company-db ~/.claude/skills/
+```
+
 ## Tests
 
 ```bash
