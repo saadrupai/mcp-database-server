@@ -6,26 +6,34 @@ export interface Tool {
   name: string;
   description: string;
   inputSchema: { type: "object"; properties: Record<string, unknown>; required?: string[] };
+  annotations: { readOnlyHint: boolean; destructiveHint: boolean; idempotentHint: boolean; openWorldHint: boolean };
 }
+
+// Every tool only reads a local database: no writes, same result for the same call, no outside network.
+const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
 
 export const TOOLS: Tool[] = [
   {
     name: "list_tables",
+    annotations: READ_ONLY,
     description: "List all tables in the database with their row counts. Call this first to explore.",
     inputSchema: { type: "object", properties: {} },
   },
   {
     name: "describe_table",
+    annotations: READ_ONLY,
     description: "Show columns (name, type, nullable, primary key) and foreign keys for one table, plus 3 sample rows.",
     inputSchema: { type: "object", properties: { table: { type: "string" } }, required: ["table"] },
   },
   {
     name: "run_query",
+    annotations: READ_ONLY,
     description: "Run a READ-ONLY SQL query (SQLite dialect). Only SELECT/WITH. Results are capped at 200 rows. Money columns ending in _cents are integers in cents.",
     inputSchema: { type: "object", properties: { sql: { type: "string" } }, required: ["sql"] },
   },
   {
     name: "sales_summary",
+    annotations: READ_ONLY,
     description: "Pre-built business report: revenue, order count and average order value for paid orders, grouped by month, product, category or country.",
     inputSchema: {
       type: "object",
