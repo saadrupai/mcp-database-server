@@ -1,5 +1,7 @@
 # MCP Database Server: let Claude or ChatGPT safely query your company data
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/saadrupai/mcp-database-server)](https://m8ven.ai/mcp/saadrupai/mcp-database-server?s=readme)
+
 A **Model Context Protocol (MCP)** server that gives AI assistants such as Claude Desktop, Claude Code and Cursor **read-only** access to a business database. Ask *"What was revenue by category last quarter?"* in plain English, and the AI explores the schema, writes the SQL and answers. It **cannot change or delete anything**.
 
 > Open-source demo project by [Saad Rupai](https://github.com/saadrupai), a backend engineer who builds AI agents, integrations and data systems.
